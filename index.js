@@ -6,6 +6,7 @@ const chalk = require('chalk'),
     touch = require('touch');
 // Internal files
 const files = require('./lib/files'),
+    inquirer = require('./lib/asking'),
     public = require('./lib/public'),
     src = require('./lib/src');
 //-- Limpia el código antes de iniciar
@@ -21,14 +22,21 @@ console.log(
     )
 );
 
-if (files.directoryExists('src') || files.directoryExists('public')) {
+if (files.directoryExists('src') && files.directoryExists('public')) {
     console.log(chalk.red('¡Ya se creó un proyecto en esta carpeta!'));
     process.exit();
 }
 
-const run = () => {
+const run = async () => {
     public.init();
     src.init();
+    const configFile = await inquirer.askConfigFiles();
+    console.log(configFile);
+    if (configFile.fill) {
+        public.fill();
+    } else {
+        public.empty();
+    }
 };
 
 run();
