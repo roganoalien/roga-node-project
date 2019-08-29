@@ -3,8 +3,7 @@ const chalk = require('chalk'),
     clear = require('clear'),
     CLI = require('clui'),
     Spinner = CLI.Spinner,
-    figlet = require('figlet'),
-    touch = require('touch');
+    figlet = require('figlet');
 // Internal files
 const files = require('./lib/files'),
     inquirer = require('./lib/asking'),
