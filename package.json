@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "Node project creator for roganoalien",
     "bin": {
-        "start": "./index.js"
+        "roga-create": "./index.js"
     },
     "main": "index.js",
     "scripts": {
