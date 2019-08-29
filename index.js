@@ -1,14 +1,18 @@
 // Node Modules Packages
 const chalk = require('chalk'),
     clear = require('clear'),
+    CLI = require('clui'),
+    Spinner = CLI.Spinner,
     figlet = require('figlet'),
-    imageToAscii = require('image-to-ascii'),
     touch = require('touch');
 // Internal files
 const files = require('./lib/files'),
     inquirer = require('./lib/asking'),
     public = require('./lib/public'),
-    src = require('./lib/src');
+    src = require('./lib/src'),
+    status = new Spinner(
+        'Creando configuraciones, archivos y carpetas, porfavor espera...'
+    );
 //-- Limpia el código antes de iniciar
 clear();
 console.log(
@@ -29,14 +33,17 @@ if (files.directoryExists('src') && files.directoryExists('public')) {
 
 const run = async () => {
     const configFile = await inquirer.askConfigFiles();
-    console.log(configFile);
+    status.start();
+    public.init();
     if (configFile.fill) {
         public.fill();
     } else {
         public.empty();
     }
-    public.init();
     src.init();
+    await setTimeout(function() {
+        status.stop();
+    }, 3000);
 };
 
 run();
