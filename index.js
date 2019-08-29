@@ -43,20 +43,25 @@ const run = async () => {
     status.stop();
     // await setTimeout(function() {
     // }, 1500);
-    console.log(chalk.hex('#F92A82')('Based on Bootstrap color codes'));
+    console.log(
+        chalk.hex('#F92A82')(
+            figlet.textSync('Based on \nBootstrap \ncolor codes', {
+                font: 'Larry 3D'
+            })
+        )
+    );
     const colorsStyl = await inquirer.askColors();
-    console.log(colorsStyl);
-    // src.colors(
-    //     colorsStyl.primary,
-    //     colorsStyl.secondary,
-    //     colorsStyl.success,
-    //     colorsStyl.danger,
-    //     colorsStyl.warning,
-    //     colorsStyl.info,
-    //     colorsStyl.light,
-    //     colorsStyl.dark,
-    //     colorsStyl.white
-    // );
+    src.colors(
+        colorsStyl.primary,
+        colorsStyl.secondary,
+        colorsStyl.success,
+        colorsStyl.danger,
+        colorsStyl.warning,
+        colorsStyl.info,
+        colorsStyl.light,
+        colorsStyl.dark,
+        colorsStyl.white
+    );
 };
 
 run();
