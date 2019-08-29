@@ -3,6 +3,7 @@ const chalk = require('chalk'),
     clear = require('clear'),
     CLI = require('clui'),
     Spinner = CLI.Spinner,
+    Progress = CLI.Progress,
     figlet = require('figlet');
 // Internal files
 const files = require('./lib/files'),
@@ -12,6 +13,7 @@ const files = require('./lib/files'),
     status = new Spinner(
         'Creando configuraciones, archivos y carpetas, porfavor espera...'
     );
+let thisProgressBar = new Progress(20);
 //-- Limpia el código antes de iniciar
 clear();
 console.log(
@@ -32,17 +34,17 @@ if (files.directoryExists('src') && files.directoryExists('public')) {
 
 const run = async () => {
     const configFile = await inquirer.askConfigFiles();
-    status.start();
+    // status.start();
+    console.log(thisProgressBar.update(10, 40));
     public.init();
     if (configFile.fill) {
         public.fill();
     } else {
         public.empty();
     }
+    console.log(thisProgressBar.update(20, 40));
     src.init();
-    status.stop();
-    // await setTimeout(function() {
-    // }, 1500);
+    console.log(thisProgressBar.update(30, 40));
     console.log(
         chalk.hex('#F92A82')(
             figlet.textSync('Based on \nBootstrap \ncolor codes', {
@@ -64,6 +66,7 @@ const run = async () => {
         colorsStyl.dark,
         colorsStyl.white
     );
+    console.log(thisProgressBar.update(40, 40));
 };
 
 run();

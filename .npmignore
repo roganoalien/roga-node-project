@@ -4,3 +4,10 @@
 .AppleDouble
 .LSOverride
 node_modules/
+public/
+src/
+logger.js
+gulpfile.js
+app.js
+.env
+.env.example
