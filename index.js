@@ -45,17 +45,18 @@ const run = async () => {
         console.log(chalk.hex('#F92A82')('Based on Bootstrap color codes'));
     }, 1500);
     const colorsStyl = await inquirer.askColors();
-    src.colors(
-        colorsStyl.primary,
-        colorsStyl.secondary,
-        colorsStyl.success,
-        colorsStyl.danger,
-        colorsStyl.warning,
-        colorsStyl.info,
-        colorsStyl.light,
-        colorsStyl.dark,
-        colorsStyl.white
-    );
+    console.log(colorsStyl);
+    // src.colors(
+    //     colorsStyl.primary,
+    //     colorsStyl.secondary,
+    //     colorsStyl.success,
+    //     colorsStyl.danger,
+    //     colorsStyl.warning,
+    //     colorsStyl.info,
+    //     colorsStyl.light,
+    //     colorsStyl.dark,
+    //     colorsStyl.white
+    // );
 };
 
 run();
