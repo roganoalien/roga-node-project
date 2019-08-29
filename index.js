@@ -46,7 +46,9 @@ const run = async () => {
     console.log(
         chalk.hex('#F92A82')(
             figlet.textSync('Based on \nBootstrap \ncolor codes', {
-                font: 'Larry 3D'
+                font: 'Stick Letters',
+                horizontalLayout: 'default',
+                verticalLayout: 'fitted'
             })
         )
     );
