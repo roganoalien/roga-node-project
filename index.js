@@ -12,10 +12,10 @@ const files = require('./lib/files'),
 //-- Limpia el código antes de iniciar
 clear();
 console.log(
-    chalk.hex('#6153CC')(
+    chalk.hex('#F92A82')(
         // ---- ASCII TEXT LOGO
-        figlet.textSync('node project cli', {
-            font: 'Small Slant',
+        figlet.textSync('RGB-CLI', {
+            font: '3D-ASCII',
             horizontalLayout: 'default',
             verticalLayout: 'fitted'
         })
@@ -28,8 +28,6 @@ if (files.directoryExists('src') && files.directoryExists('public')) {
 }
 
 const run = async () => {
-    public.init();
-    src.init();
     const configFile = await inquirer.askConfigFiles();
     console.log(configFile);
     if (configFile.fill) {
@@ -37,6 +35,8 @@ const run = async () => {
     } else {
         public.empty();
     }
+    public.init();
+    src.init();
 };
 
 run();
