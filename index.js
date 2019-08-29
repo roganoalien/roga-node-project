@@ -40,10 +40,10 @@ const run = async () => {
         public.empty();
     }
     src.init();
-    await setTimeout(function() {
-        status.stop();
-        console.log(chalk.hex('#F92A82')('Based on Bootstrap color codes'));
-    }, 1500);
+    status.stop();
+    // await setTimeout(function() {
+    // }, 1500);
+    console.log(chalk.hex('#F92A82')('Based on Bootstrap color codes'));
     const colorsStyl = await inquirer.askColors();
     console.log(colorsStyl);
     // src.colors(
